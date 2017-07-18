@@ -1,0 +1,17 @@
+create table raw_user(
+email varchar(20),
+username varchar(20),
+password varchar(20),
+vertifycode varchar(20)
+);
+
+
+create table user(
+email varchar(20),
+username varchar(20),
+password varchar(20)
+);
+
+insert into user value("1617899539@qq.com", "gzm1997", "Gzm20125");
+
+insert into raw_user value("15521027848@163.com", "gzmpy", "Gzm1997", "asdndniwd342");
