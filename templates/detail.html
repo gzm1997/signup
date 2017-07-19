@@ -1,9 +1,45 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-	<title>user detail</title>
+<title>User info</title>
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<!-- -->
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+
+<script src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+
+
+
+
 </head>
 <body>
-	<p>Now you are log in as {{ username }} </p>
-</body>
-</html>
+<!-- contact-form -->	
+<div class="message warning">
+<div class="inset">
+	<div class="login-head">
+		<h1>User</h1>
+		 <div class="alert-close"> </div> 			
+	</div>
+
+			<li>
+				<input type="text" class="text" name="email" value= {{ email }} onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"><a href="#" ></a>
+			</li>
+			
+
+			<li>
+				<input type="text" name="username" value=  {{ username }} onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'username';}"> <a href="#"></a>
+			</li>
+		
+
+
+		</div>					
+	</div>
+	</div>
+	<div class="clear"> </div>

@@ -1,4 +1,5 @@
 from flask import *
+import json
 from signup import manage_database
 from signup import send_email
 
@@ -15,21 +16,26 @@ def signup():
 		comfirmpassword = request.form["comfirmpassword"]
 		print(username, password, comfirmpassword)
 		if password != comfirmpassword:
-			return "password and comfirmpassword is not the same"
-		print("this is a post, email is:", email)
+			return jsonify(comfirmpassword = "password and comfirmpassword is not the same")
 
-		check_r_user = mana_sql._search_r_user(email = email, username = username, vertifycode = vertifycode)
+		check_r_user = mana_sql._search_r_user(email = email, username = username)
 		if check_r_user != {}:
-			return "some info have been signup and not been vertified, please go to email to vertify"
+			return jsonify(warn = "these info have been signup and not been vertified, please go to email to vertify")
+			
 
-		check_user = mana_sql._search_user(email = email, username = username)
-		if check_user != {}:
-			return "some info have been signup"
+		check_user_email = mana_sql._search_user(email = email)
+		check_user_username = mana_sql._search_user(username = username)
+		if check_user_email != {}:
+			return jsonify(email = "email have been signup")
+		if check_user_username != {}:
+			return jsonify(username = "username have been signup")		
 
 		vertifycode = send_email.send_vertify_email(email)
 		print("vertifycode", vertifycode)
-		mana_sql._insert_r_user(email, username, password, vertifycode)
-		return "we have sent a message to your email, please go to your email and click the url in email to vertify your account"
+		if mana_sql._insert_r_user(email, username, password, vertifycode) == 0:
+			return jsonify(warn = "we have sent a message to your email, please go to your email and click the url in email to vertify your account")
+		else:
+			return jsonify(warn = "sign up failed")
 
 @app.route("/vertify")
 def vertify():
@@ -51,6 +57,7 @@ def login():
 	if request.method == "GET":
 		return render_template("login.html")
 	elif request.method == "POST":
+		print("this is post")
 		email = request.form["email"]
 		password = request.form["password"]
 		print("email:", email)
@@ -58,9 +65,9 @@ def login():
 		result = mana_sql._search_user(email = email)
 		print(result)
 		if result == {}:
-			return "no such a account!"
+			return jsonify(username = "no such a account!")
 		elif result != {} and result["password"] != password:
-			return "password is wrong"
+			return jsonify(password = "password is wrong")
 		elif result != {} and result["password"] == password:
 			session['username'] = result["username"]
 			return redirect(url_for('detail', username = result["username"]))
@@ -70,7 +77,8 @@ def login():
 def detail():
 	username = request.args.get('username')
 	if "username" in session and username == session["username"]:
-		return render_template("detail.html", username = username)
+		email = mana_sql._search_user(username = username)["email"]
+		return render_template("detail.html", email = email, username = username)
 	abort(401)
 
 

@@ -1,16 +1,98 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-	<title>signup</title>
+<title>Sign up</title>
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<!-- -->
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+
+<script src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+
+<script>
+
+$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.message').fadeOut('slow', function(c){
+	  		$('.message').remove();
+		});
+	});	  
+
+    var submit_form = function(e) {
+      	$.post($SCRIPT_ROOT + '/signup', {
+        	email: $('input[name="email"]').val(),
+        	username: $('input[name="username"]').val(),
+        	password: $('input[name="password"]').val(),
+        	comfirmpassword: $('input[name="comfirmpassword"]').val()
+      	}, function(data) {
+        	if("email" in data) {
+        		$("#sh1").text(data.email)
+        	}
+        	if("username" in data) {
+        		$("#sh2").text(data.username)
+        	}
+        	if(comfirmpassword in data) {
+        		$("#sh4").text(data.comfirmpassword)
+        	}
+        	if(warn in data) {
+        		$("#sh5").text(data.warn)
+        	}
+        	$('input[name="email"]').focus().select();
+      	});
+      	return false;
+    };
+
+    $('#submitBut').bind('click', submit_form);
+
+});
+</script>
+
+
 </head>
 <body>
-	<form action="/signup", method="post">
-		<p>email:<br> <input type="text" name="email"></p>
-		<p>user name:<br> <input type="text" name="username"></p>
-		<p>password:<br> <input type="text" name="password"></p>
-		<p>comfirm password:<br> <input type="text" name="comfirmpassword"></p>
-		<input type="submit" value="submit">
-	</form>
-	<a href="http://139.199.182.179:8888/login">登陆</a>
-</body>
-</html>
+<!-- contact-form -->	
+<div class="message warning">
+<div class="inset">
+	<div class="login-head">
+		<h1>Sign up</h1>
+		 <div class="alert-close"> </div> 			
+	</div>
+
+			<li>
+				<input type="text" class="text" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"><a href="#"></a>
+			</li>
+			<div id="sh1" class="clear" style="text-align: center;"></div>
+
+			<li>
+				<input type="text" class="text" name="username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" ></a>
+			</li>
+			<div id="sh2" class="clear" style="text-align: center;"> </div>
+
+			<li>
+				<input type="text" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#"></a>
+			</li>
+			<div id="sh3" class="clear" style="text-align: center;"> </div>
+
+			<li>
+				<input type="text" name="comfirmpassword" value="Comfirmpassword" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Comfirmpassword';}"> <a href="#"></a>
+			</li>
+			<div  id="sh4" class="clear" style="text-align: center;"> </div>
+
+		<div class="submit">
+			<input id="submitBut" type="submit" value="Sign up" style="position: relative;left: 35px; bottom: 10px">
+			<h4 style="position: relative;left: 40px"><a href="#">have a account already?</a></h4>
+			<div id="sh5" class="clear" style="text-align: center;"> </div>	
+		</div>
+		
+
+
+		</div>					
+	</div>
+	</div>
+	<div class="clear"> </div>

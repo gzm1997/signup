@@ -1,13 +1,81 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-	<title>login</title>
+<title>Login</title>
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<!-- -->
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+
+<script src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+
+<script>
+
+$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.message').fadeOut('slow', function(c){
+	  		$('.message').remove();
+		});
+	});	  
+
+    var submit_form = function(e) {
+      	$.post($SCRIPT_ROOT + '/login', {
+        	email: $('input[name="email"]').val(),
+        	password: $('input[name="password"]').val(),
+      	}, function(data) {
+        	if("username" in data) {
+        		$("#sh2").text(data.username)
+        	}
+        	if("password" in data) {
+        		$("#sh3").text(data.password)
+        	}
+        	$('input[name="email"]').focus().select();
+      	});
+      	return false;
+    };
+
+    $('#submitBut').bind('click', submit_form);
+
+});
+</script>
+
+
 </head>
 <body>
-	<form action="/login", method="post">
-		<p>email:<br> <input type="text" name="email"></p>
-		<p>password:<br> <input type="text" name="password"></p>
-		<input type="submit" value="submit">
-	</form>	
-</body>
-</html>
+<!-- contact-form -->	
+<div class="message warning">
+<div class="inset">
+	<div class="login-head">
+		<h1>Login</h1>
+		 <div class="alert-close"> </div> 			
+	</div>
+
+			<li>
+				<input type="text" class="text" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"><a href="#" ></a>
+			</li>
+			<div id="sh2" class="clear" style="text-align: center;"> </div>
+
+			<li>
+				<input type="text" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#"></a>
+			</li>
+			<div id="sh3" class="clear" style="text-align: center;"> </div>
+
+
+		<div class="submit">
+			<input id="submitBut" type="submit" value="login" style="position: relative;left: 35px; bottom: 10px">
+			<h4 style="position: relative;left: 40px"><a href="#">have not any account?</a></h4>
+			<div id="sh5" class="clear" style="text-align: center;"> </div>	
+		</div>
+		
+
+
+		</div>					
+	</div>
+	</div>
+	<div class="clear"> </div>
