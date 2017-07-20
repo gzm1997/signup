@@ -38,7 +38,7 @@ $(document).ready(function(c) {
         	$('input[name="email"]').focus().select();
         	if("success" in data) {
         		$("#sh5").text("Login successfully")
-        		window.location.href = "detail/username=" + data.success
+        		window.location.href = "/detail?username=" + data.success
         	}
       	});
       	return false;
