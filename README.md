@@ -9,7 +9,7 @@ I rewrite my homework in Modern Web Program class, I write it by html5, jquery, 
 
 
 ----------
-## run_signup.py##
+## run_signup.py ##
 Because I make this small project a **package**, so it's necessary to use a **run.py** to run the project (*just a py file exactly outside this package no matter what you name it*)
 
 run.py should look like below:
