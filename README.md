@@ -1,6 +1,6 @@
 # Mailbox signup authentication and login
 
-标签（空格分隔）： signup authentication login 
+标签： signup authentication login 
 
 
 ----------
@@ -21,7 +21,7 @@ I rewrite my homework in Modern Web program, I write it by html5, jquery, nodejs
 ![detail][5]
 
 
-  [1]: http://139.199.182.179:8888/signup
+  [1]: http://139.199.182.179/signup
   [2]: https://github.com/gzm1997/signup/blob/master/screenshots/signup.gif?raw=true
   [3]: https://github.com/gzm1997/signup/blob/master/screenshots/signup.png?raw=true
   [4]: https://github.com/gzm1997/signup/blob/master/screenshots/login.png?raw=true
