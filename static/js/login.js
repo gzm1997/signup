@@ -11,6 +11,7 @@ $(document).ready(function(c) {
         	password: $('input[name="password"]').val(),
       	}, function(data) {
         	if("email" in data) {
+                alert("lala")
                 alert(data.email)
         		$("#sh1").text(data.email)
         	}
