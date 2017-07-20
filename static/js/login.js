@@ -11,13 +11,14 @@ $(document).ready(function(c) {
         	password: $('input[name="password"]').val(),
       	}, function(data) {
         	if("email" in data) {
-        		$("#sh1").text(data.username)
+        		$("#sh1").text(data.email)
         	}
         	if("password" in data) {
         		$("#sh3").text(data.password)
         	}
         	$('input[name="email"]').focus().select();
         	if("success" in data) {
+        		$("#sh5").text("Login successfully")
         		window.location.href = "/detail?username=" + data.success
         	}
       	});
