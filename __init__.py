@@ -26,14 +26,16 @@ def signup():
 		check_user_email = mana_sql._search_user(email = email)
 		check_user_username = mana_sql._search_user(username = username)
 		if check_user_email != {}:
+			print("email double")
 			return jsonify(email = "email have been signup")
 		if check_user_username != {}:
+			print("username double")
 			return jsonify(username = "username have been signup")		
 
 		vertifycode = send_email.send_vertify_email(email)
 		print("vertifycode", vertifycode)
 		if mana_sql._insert_r_user(email, username, password, vertifycode) == 0:
-			return jsonify(warn = "we have sent a message to your email, please go to your email and click the url in email to vertify your account")
+			return jsonify(warn = "signup successfully and need to go to your email")
 		else:
 			return jsonify(warn = "sign up failed")
 
