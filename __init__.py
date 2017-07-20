@@ -45,6 +45,8 @@ def signup():
 def vertify():
 	vertifycode = request.args.get('vertifycode')
 	result = mana_sql._search_r_user(vertifycode = vertifycode)
+	if result == {}:
+		return "no such a vertifycode"
 	print("result", result)
 	print("email", result["email"])
 	print("username", result["username"])
