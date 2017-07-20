@@ -32,6 +32,7 @@ $(document).ready(function(c) {
         		password: $('input[name="password"]').val(),
         		comfirmpassword: $('input[name="comfirmpassword"]').val()
       		}, function(data) {
+      			//alert(data)
         		if("email" in data) {
         			$("#sh1").text(data.email)
         		}
@@ -42,6 +43,7 @@ $(document).ready(function(c) {
         			$("#sh4").text(data.comfirmpassword)
         		}
         		if(warn in data) {
+        			alert(data.warn)
         			$("#sh5").text(data.warn)
         		}
         		$('input[name="email"]').focus().select();
