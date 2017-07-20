@@ -1,11 +1,25 @@
 # Mailbox signup authentication and login
 
-标签： signup authentication login 
+标签（空格分隔）： signup authentication login 
 
 
 ----------
 
-I rewrite my homework in Modern Web program, I write it by html5, jquery, nodejs before, now I rebuild with python flask and here it is its [demo][1]
+I rewrite my homework in Modern Web Program class, I write it by html5, jquery, nodejs before, now I rebuild with **python flask** and here it is its [demo][1]
+
+
+----------
+## run_signup.py##
+Because I make this small project a **package**, so it's necessary to use a **run.py** to run the project (*just a py file exactly outside this package no matter what you name it*)
+
+run.py should look like below:
+```
+from signup import app
+
+app = app
+if __name__ == "__main__":
+	app.run(host = "0.0.0.0", port = 8080)
+```
 
 ----------
 ## Renderings ##
