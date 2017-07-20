@@ -42,8 +42,8 @@ $(document).ready(function(c) {
         		if(comfirmpassword in data) {
         			$("#sh4").text(data.comfirmpassword)
         		}
-        		if(warn in data) {
-        			alert(data.warn)
+        		if("warn" in data) {
+        			//alert(data.warn)
         			$("#sh5").text(data.warn)
         		}
         		$('input[name="email"]').focus().select();
