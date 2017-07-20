@@ -75,10 +75,14 @@ def login():
 
 @app.route("/detail")
 def detail():
+	print("this is detail get")
 	username = request.args.get('username')
+	print("username", username)
 	if "username" in session and username == session["username"]:
+		print("username", username)
 		email = mana_sql._search_user(username = username)["email"]
-		return render_template("detail.html", email = email, username = username)
+		print("email", email)
+		return render_template("detail.html", Myemail = email, Myusername = username)
 	abort(401)
 
 
