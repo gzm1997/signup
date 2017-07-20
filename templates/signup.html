@@ -25,31 +25,49 @@ $(document).ready(function(c) {
 	});	  
 
     var submit_form = function(e) {
-      	$.post($SCRIPT_ROOT + '/signup', {
-        	email: $('input[name="email"]').val(),
-        	username: $('input[name="username"]').val(),
-        	password: $('input[name="password"]').val(),
-        	comfirmpassword: $('input[name="comfirmpassword"]').val()
-      	}, function(data) {
-        	if("email" in data) {
-        		$("#sh1").text(data.email)
-        	}
-        	if("username" in data) {
-        		$("#sh2").text(data.username)
-        	}
-        	if(comfirmpassword in data) {
-        		$("#sh4").text(data.comfirmpassword)
-        	}
-        	if(warn in data) {
-        		$("#sh5").text(data.warn)
-        	}
-        	$('input[name="email"]').focus().select();
-      	});
+    	if($('input[name="email"]').val() != "" && $('input[name="username"]').val() != "" && $('input[name="password"]').val() != "" && $('input[name="comfirmpassword"]').val() != "") {
+      		$.post($SCRIPT_ROOT + '/signup', {
+        		email: $('input[name="email"]').val(),
+        		username: $('input[name="username"]').val(),
+        		password: $('input[name="password"]').val(),
+        		comfirmpassword: $('input[name="comfirmpassword"]').val()
+      		}, function(data) {
+        		if("email" in data) {
+        			$("#sh1").text(data.email)
+        		}
+        		if("username" in data) {
+        			$("#sh2").text(data.username)
+        		}
+        		if(comfirmpassword in data) {
+        			$("#sh4").text(data.comfirmpassword)
+        		}
+        		if(warn in data) {
+        			$("#sh5").text(data.warn)
+        		}
+        		$('input[name="email"]').focus().select();
+      		});
+    	}
       	return false;
     };
 
     $('#submitBut').bind('click', submit_form);
 
+    $('input[name="email"]').bind("click", function() {
+    	$('input[name="email"]').val("")
+    	$("#sh1").text("")
+    })
+    $('input[name="username"]').bind("click", function() {
+    	$('input[name="username"]').val("")
+    	$("#sh2").text("")
+    })
+    $('input[name="password"]').bind("click", function() {
+    	$('input[name="password"]').val("")
+    	$("#sh3").text("")
+    })   
+    $('input[name="comfirmpassword"]').bind("click", function() {
+    	$('input[name="comfirmpassword"]').val("")
+    	$("#sh4").text("")
+    })
 });
 </script>
 
@@ -66,22 +84,22 @@ $(document).ready(function(c) {
 			</div>
 
 			<li>
-				<input type="text" class="text" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"><a href="#"></a>
+				<input type="text" class="text" name="email" value="Email";" onblur="if (this.value == '') {this.value = 'Email';}"><a href="#"></a>
 			</li>
 			<div id="sh1" class="clear" style="text-align: center;"></div>
 
 			<li>
-				<input type="text" class="text" name="username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" ></a>
+				<input type="text" class="text" name="username" value="Username";" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" ></a>
 			</li>
 			<div id="sh2" class="clear" style="text-align: center;"> </div>
 
 			<li>
-				<input type="text" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#"></a>
+				<input type="text" name="password" value="Password";" onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#"></a>
 			</li>
 			<div id="sh3" class="clear" style="text-align: center;"> </div>
 
 			<li>
-				<input type="text" name="comfirmpassword" value="Comfirmpassword" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Comfirmpassword';}"> <a href="#"></a>
+				<input type="text" name="comfirmpassword" value="Comfirmpassword";" onblur="if (this.value == '') {this.value = 'Comfirmpassword';}"> <a href="#"></a>
 			</li>
 			<div  id="sh4" class="clear" style="text-align: center;"> </div>
 

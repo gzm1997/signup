@@ -45,7 +45,15 @@ $(document).ready(function(c) {
     };
 
     $('#submitBut').bind('click', submit_form);
+    $('input[name="email"]').bind("click", function() {
+    	$('input[name="email"]').val("")
+    	$("#sh1").text("")
+    })
 
+    $('input[name="password"]').bind("click", function() {
+    	$('input[name="password"]').val("")
+    	$("#sh3").text("")
+    })   
 });
 </script>
 
@@ -61,12 +69,12 @@ $(document).ready(function(c) {
 			</div>
 
 			<li>
-				<input type="text" class="text" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"><a href="#" ></a>
+				<input type="text" class="text" name="email" value="Email" onblur="if (this.value == '') {this.value = 'Email';}"><a href="#" ></a>
 			</li>
 			<div id="sh2" class="clear" style="text-align: center;"> </div>
 
 			<li>
-				<input type="text" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#"></a>
+				<input type="text" name="password" value="Password" onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#"></a>
 			</li>
 			<div id="sh3" class="clear" style="text-align: center;"> </div>
 
