@@ -77,12 +77,12 @@ def login():
 def detail():
 	print("this is detail get")
 	username = request.args.get('username')
-	#if "username" in session and username == session["username"]:
-	print("username", username)
-	email = mana_sql._search_user(username = username)["email"]
-	print("email", email)
-	return render_template("detail.html", Myemail = email, Myusername = username)
-	#abort(401)
+	if "username" in session and username == session["username"]:
+		print("username", username)
+		email = mana_sql._search_user(username = username)["email"]
+		print("email", email)
+		return render_template("detail.html", Myemail = email, Myusername = username)
+	abort(401)
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
