@@ -1,78 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Sign up</title>
-<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<!-- -->
-<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
-
-<script src="/static/js/jquery.min.js"></script>
-<script type="text/javascript">
-  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-</script>
+	<title>Sign up</title>
+	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<!-- -->
+	<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
 
 
-<script>
-
-$(document).ready(function(c) {
-	$('.alert-close').on('click', function(c){
-		$('.message').fadeOut('slow', function(c){
-	  		$('.message').remove();
-		});
-	});	  
-
-    var submit_form = function(e) {
-    	if($('input[name="email"]').val() != "" && $('input[name="username"]').val() != "" && $('input[name="password"]').val() != "" && $('input[name="comfirmpassword"]').val() != "") {
-      		$.post($SCRIPT_ROOT + '/signup', {
-        		email: $('input[name="email"]').val(),
-        		username: $('input[name="username"]').val(),
-        		password: $('input[name="password"]').val(),
-        		comfirmpassword: $('input[name="comfirmpassword"]').val()
-      		}, function(data) {
-      			//alert(data)
-        		if("email" in data) {
-        			$("#sh1").text(data.email)
-        		}
-        		if("username" in data) {
-        			$("#sh2").text(data.username)
-        		}
-        		if("comfirmpassword" in data) {
-        			$("#sh4").text(data.comfirmpassword)
-        		}
-        		if("warn" in data) {
-        			alert(data.warn)
-        			//$("#sh5").text(data.warn)
-        		}
-        		$('input[name="email"]').focus().select();
-      		});
-    	}
-      	return false;
-    };
-
-    $('#submitBut').bind('click', submit_form);
-
-    $('input[name="email"]').bind("click", function() {
-    	$('input[name="email"]').val("")
-    	$("#sh1").text("")
-    })
-    $('input[name="username"]').bind("click", function() {
-    	$('input[name="username"]').val("")
-    	$("#sh2").text("")
-    })
-    $('input[name="password"]').bind("click", function() {
-    	$('input[name="password"]').val("")
-    	$("#sh3").text("")
-    })   
-    $('input[name="comfirmpassword"]').bind("click", function() {
-    	$('input[name="comfirmpassword"]').val("")
-    	$("#sh4").text("")
-    })
-});
-</script>
-
+	<script src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript">
+  		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+	<script src="/static/js/signup.js"></script>
 
 </head>
 

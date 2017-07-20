@@ -1,62 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Login</title>
-<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<!-- -->
-<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
-
-<script src="/static/js/jquery.min.js"></script>
-<script type="text/javascript">
-  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-</script>
+	<title>Login</title>
+	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<!-- -->
+	<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
 
 
-<script>
-
-$(document).ready(function(c) {
-	$('.alert-close').on('click', function(c){
-		$('.message').fadeOut('slow', function(c){
-	  		$('.message').remove();
-		});
-	});	  
-
-    var submit_form = function(e) {
-      	$.post($SCRIPT_ROOT + '/login', {
-        	email: $('input[name="email"]').val(),
-        	password: $('input[name="password"]').val(),
-      	}, function(data) {
-        	if("username" in data) {
-        		$("#sh2").text(data.username)
-        	}
-        	if("password" in data) {
-        		$("#sh3").text(data.password)
-        	}
-        	$('input[name="email"]').focus().select();
-        	if("success" in data) {
-        		$("#sh5").text("Login successfully")
-        		window.location.href = "/detail?username=" + data.success
-        	}
-      	});
-      	return false;
-    };
-
-    $('#submitBut').bind('click', submit_form);
-    $('input[name="email"]').bind("click", function() {
-    	$('input[name="email"]').val("")
-    	$("#sh1").text("")
-    })
-
-    $('input[name="password"]').bind("click", function() {
-    	$('input[name="password"]').val("")
-    	$("#sh3").text("")
-    })   
-});
-</script>
-
+	<script src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript">
+  		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+	<script src="/static/js/login.js"></script>
 
 </head>
 <body>
