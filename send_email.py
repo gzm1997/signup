@@ -25,7 +25,7 @@ def send_email(smtp_server, from_email, from_email_psd, to_email, subject, conte
 def send_vertify_email(signup_user_email):
 	length = 16
 	vertifycode = ''.join([random.choice(string.ascii_letters) for i in range(length)])
-	send_email("smtp.163.com", "m15521027848@163.com", "Gzm1997", signup_user_email, "ikdeer注册验证", 
+	send_email("smtp.163.com", "m15521027848@163.com", "Gzm1997", signup_user_email, "gzm注册验证", 
 		'<html>' +
 		'<body>' + 
 		'<a href=' + 
