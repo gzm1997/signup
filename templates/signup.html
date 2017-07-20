@@ -39,11 +39,11 @@ $(document).ready(function(c) {
         		if("username" in data) {
         			$("#sh2").text(data.username)
         		}
-        		if(comfirmpassword in data) {
+        		if("comfirmpassword" in data) {
         			$("#sh4").text(data.comfirmpassword)
         		}
         		if("warn" in data) {
-        			//alert(data.warn)
+        			alert(data.warn)
         			$("#sh5").text(data.warn)
         		}
         		$('input[name="email"]').focus().select();

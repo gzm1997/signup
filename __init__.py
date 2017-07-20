@@ -23,6 +23,7 @@ def signup():
 			return jsonify(warn = "these info have been signup and not been vertified, please go to email to vertify")
 			
 
+		
 		check_user_email = mana_sql._search_user(email = email)
 		check_user_username = mana_sql._search_user(username = username)
 		if check_user_email != {}:
