@@ -69,10 +69,13 @@ def login():
 		result = mana_sql._search_user(email = email)
 		print(result)
 		if result == {}:
+			print("no such account")
 			return jsonify(email = "no such a account!")
 		elif result != {} and result["password"] != password:
+			print("password wrong")
 			return jsonify(password = "password is wrong")
 		elif result != {} and result["password"] == password:
+			print("login successfully")
 			session['username'] = result["username"]
 			return jsonify(success = result["username"])
 
