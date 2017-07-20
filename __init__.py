@@ -34,7 +34,7 @@ def signup():
 		except:
 			vertifycode = "email err"
 			return jsonify(email = "your email is wrong")
-			
+
 		print("vertifycode", vertifycode)
 		if mana_sql._insert_r_user(email, username, password, vertifycode) == 0:
 			return jsonify(warn = "signup successfully and need to go to your email")
@@ -46,7 +46,7 @@ def vertify():
 	vertifycode = request.args.get('vertifycode')
 	result = mana_sql._search_r_user(vertifycode = vertifycode)
 	print("result", result)
-	print("emial", result["email"])
+	print("email", result["email"])
 	print("username", result["username"])
 	print("password", result["password"])
 	if result != {}:
@@ -69,7 +69,7 @@ def login():
 		result = mana_sql._search_user(email = email)
 		print(result)
 		if result == {}:
-			return jsonify(username = "no such a account!")
+			return jsonify(email = "no such a account!")
 		elif result != {} and result["password"] != password:
 			return jsonify(password = "password is wrong")
 		elif result != {} and result["password"] == password:
