@@ -70,7 +70,7 @@ def login():
 			return jsonify(password = "password is wrong")
 		elif result != {} and result["password"] == password:
 			session['username'] = result["username"]
-			return redirect(url_for('detail', username = result["username"]))
+			return jsonify(success = result["username"])
 
 
 @app.route("/detail")
