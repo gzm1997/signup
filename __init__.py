@@ -63,9 +63,9 @@ def login():
 	if request.method == "GET":
 		return render_template("login.html")
 	elif request.method == "POST":
-		if "username" in session:
-			session.pop["username"]
-			
+		#if "username" in session:
+			#session.pop["username"]
+
 		print("this is post")
 		email = request.form["email"]
 		password = request.form["password"]
