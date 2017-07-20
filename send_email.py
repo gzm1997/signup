@@ -15,8 +15,8 @@ def send_email(smtp_server, from_email, from_email_psd, to_email, subject, conte
 
 	message = MIMEText(content, type_message, "utf-8")
 	message["subject"] = Header(subject)
-	message["from"] = _format_addr('ikdeer官方 <%s>' % from_email)
-	message["to"] = _format_addr('ikdeer注册用户 <%s>' % to_email)
+	message["from"] = _format_addr('gzm <%s>' % from_email)
+	message["to"] = _format_addr('注册用户 <%s>' % to_email)
 
 	email_client.sendmail(from_email, [to_email], message.as_string())
 	email_client.quit()
@@ -31,7 +31,7 @@ def send_vertify_email(signup_user_email):
 		'<a href=' + 
 		'http://139.199.182.179:8888/vertify?vertifycode=' + vertifycode + 
 		'>' + 
-		'点击此处验证你的ikdeer账户' + 
+		'点击此处验证你的账户' + 
 		'</a>'
 		'</body>' + 
 		'</html>', "html")
