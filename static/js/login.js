@@ -10,6 +10,7 @@ $(document).ready(function(c) {
         	email: $('input[name="email"]').val(),
         	password: $('input[name="password"]').val(),
       	}, function(data) {
+            alert("data rec")
         	if("email" in data) {
                 alert("lala")
                 alert(data.email)
