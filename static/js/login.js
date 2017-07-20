@@ -26,13 +26,15 @@ $(document).ready(function(c) {
     };
 
     $('#submitBut').bind('click', submit_form);
-    $('input[name="email"]').bind("click", function() {
-    	$('input[name="email"]').val("")
-    	$("#sh1").text("")
-    })
 
+    $('input[name="email"]').bind("click", function() {
+        $('input[name="email"]').val("")
+        $("#sh1").text("")
+    })
     $('input[name="password"]').bind("click", function() {
-    	$('input[name="password"]').val("")
-    	$("#sh3").text("")
+        $('input[name="password"]').val("")
+        $("#sh3").text("")
     })   
+
+  
 });
