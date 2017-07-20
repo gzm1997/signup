@@ -18,12 +18,9 @@ def signup():
 		if password != comfirmpassword:
 			return jsonify(comfirmpassword = "password and comfirmpassword is not the same")
 
-		check_r_user = mana_sql._search_r_user(email = email, username = username)
-		if check_r_user != {}:
-			return jsonify(warn = "these info have been signup and not been vertified, please go to email to vertify")
 			
 
-		
+
 		check_user_email = mana_sql._search_user(email = email)
 		check_user_username = mana_sql._search_user(username = username)
 		if check_user_email != {}:
@@ -32,8 +29,12 @@ def signup():
 		if check_user_username != {}:
 			print("username double")
 			return jsonify(username = "username have been signup")		
-
-		vertifycode = send_email.send_vertify_email(email)
+		try:
+			vertifycode = send_email.send_vertify_email(email)
+		except:
+			vertifycode = "email err"
+			return jsonify(email = "your email is wrong")
+			
 		print("vertifycode", vertifycode)
 		if mana_sql._insert_r_user(email, username, password, vertifycode) == 0:
 			return jsonify(warn = "signup successfully and need to go to your email")

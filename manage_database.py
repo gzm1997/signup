@@ -85,7 +85,7 @@ class sql_manager(object):
     #0表示添加成功，1表示emai已被用添加失败，2表示username被用添加失败, 3表示邮箱已注册但未认证
     def _insert_r_user(self, email, username, password, vertifycode):
         if self._search_r_user(email = email) != {}:
-            return 3
+            self._delete_r_user(email = email)
         if self._search_user(username = username) != {}:
             return 2
         if self._search_user(email = email) != {}:
