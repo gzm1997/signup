@@ -96,6 +96,11 @@ def detail():
 		return render_template("detail.html", Myemail = email, Myusername = username)
 	abort(401)
 
+@app.route("/logout")
+def logout():
+	session.clear()
+	return redirect(url_for("login"))
+
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
