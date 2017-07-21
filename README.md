@@ -5,7 +5,7 @@
 
 ----------
 
-I rewrite my homework in Modern Web Program class, I write it by html5, jquery, nodejs before, now I rebuild with **python flask** and here it is its [demo][1]
+I rewrite my homework in Modern Web Program class, I wrote it by html5, jquery, nodejs before, now I rebuild with **python flask** and here it is its [demo][1]
 
 
 ----------
